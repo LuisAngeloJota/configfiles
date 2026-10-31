@@ -1,0 +1,8 @@
+nh
+n uxplay
+s 1920x1080@60
+vs glimagesink
+vd vah264dec
+as pipewiresink
+fps 60
+pw yalpxu

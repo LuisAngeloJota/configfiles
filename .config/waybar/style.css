@@ -1,0 +1,88 @@
+* {
+  all: unset;
+  margin: 0;
+  padding: 0;
+}
+
+window#waybar {
+  background: none;
+  color: #c6d0f5;
+  font-family: Inter, "Font Awesome 6 Free Solid";
+  font-size: 12px;
+  font-weight: bold;
+}
+
+#workspaces button {
+  background: #303446;
+  border-radius: 6px;
+  margin-right: 8px;
+  min-height: 24px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+#workspaces button.focused {
+  background: #8caaee;
+  color: #232634;
+}
+
+#workspaces button.urgent {
+  background: #ef9f76;
+  color: #232634;
+}
+
+#clock {
+  background: #303446;
+  border-radius: 6px;
+  min-height: 24px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+#wireplumber {
+  background: #303446;
+  border-radius: 6px;
+  min-height: 24px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+#battery {
+  background: #303446;
+  border-radius: 6px;
+  min-height: 24px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+#network {
+  background: #303446;
+  border-radius: 6px;
+  min-height: 24px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+#bluetooth {
+  background: #303446;
+  border-radius: 6px;
+  min-height: 24px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+#idle_inhibitor {
+  border-radius: 6px;
+  min-height: 24px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+#idle_inhibitor.activated {
+  background: #8caaee;
+  color: #232634;
+}
+
+#idle_inhibitor.deactivated {
+  background: #303446;
+}

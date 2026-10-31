@@ -1,0 +1,165 @@
+# Modifier key (Mod1 = Left Alt)
+set $mod Mod1
+
+# Vim direction keys
+set $left h
+set $down j
+set $up k
+set $right l
+
+# Monitors
+output HDMI-A-1 mode 1920x1080@165hz max_render_time off allow_tearing yes position 0 0
+
+workspace 1 output HDMI-A-1
+workspace 2 output HDMI-A-1
+workspace 3 output HDMI-A-1
+workspace 4 output HDMI-A-1
+workspace 5 output HDMI-A-1
+workspace 6 output HDMI-A-1
+workspace 7 output HDMI-A-1
+workspace 8 output HDMI-A-1
+workspace 9 output HDMI-A-1
+workspace 10 output HDMI-A-1
+
+# Idle management
+# exec swayidle -w timeout 60 'swaymsg "output * power off"' resume 'swaymsg "output * power on"'
+
+# Launcher
+bindsym $mod+space exec qs -c noctalia-shell ipc call launcher toggle
+
+# Terminal
+bindsym $mod+return exec ghostty
+
+# Kill focused window
+bindsym $mod+q kill
+
+# Floating modifier
+floating_modifier $mod normal
+
+# Config reload
+bindsym $mod+shift+c reload
+
+# Change the focus
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+# Move the focused window
+bindsym $mod+shift+$left move left
+bindsym $mod+shift+$down move down
+bindsym $mod+shift+$up move up
+bindsym $mod+shift+$right move right
+
+# Switch to workspace
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+
+# Move focused container to workspace
+bindsym $mod+shift+1 move container to workspace number 1
+bindsym $mod+shift+2 move container to workspace number 2
+bindsym $mod+shift+3 move container to workspace number 3
+bindsym $mod+shift+4 move container to workspace number 4
+bindsym $mod+shift+5 move container to workspace number 5
+bindsym $mod+shift+6 move container to workspace number 6
+bindsym $mod+shift+7 move container to workspace number 7
+bindsym $mod+shift+8 move container to workspace number 8
+bindsym $mod+shift+9 move container to workspace number 9
+bindsym $mod+shift+0 move container to workspace number 10
+
+# Switch the current container between different layout styles
+bindsym $mod+s layout toggle split
+
+# Make the current focus fullscreen
+bindsym $mod+f fullscreen
+
+# Toggle the current focus between tiling and floating mode
+bindsym $mod+shift+f floating toggle
+
+# Move focus to the parent container
+bindsym $mod+a focus parent
+
+# Move the currently focused window to the scratchpad
+bindsym $mod+shift+tab move scratchpad
+
+# Toggle scratchpad
+bindsym $mod+tab scratchpad show
+
+# Resizing containers
+bindsym $mod+ctrl+$left resize shrink width 10px
+bindsym $mod+ctrl+$up resize grow height 10px
+bindsym $mod+ctrl+$down resize shrink height 10px
+bindsym $mod+ctrl+$right resize grow width 10px
+
+# Disable window focus on mouse hover
+focus_follows_mouse no
+
+# Brightness
+bindsym XF86MonBrightnessUp exec brightnessctl set 1%+
+bindsym XF86MonBrightnessDown exec brightnessctl set 1%-
+
+# Media
+bindsym XF86AudioRaiseVolume exec wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 1%+
+bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-
+bindsym XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# Screenshot
+bindsym $mod+shift+s exec grim -g "$(slurp)" - | wl-copy
+
+# OCR
+bindsym $mod+shift+t exec grim -g "$(slurp)" - | tesseract - - | wl-copy
+
+# Input device config
+# input type:touchpad {
+#     middle_emulation enabled
+#     natural_scroll enabled
+#     tap enabled
+# }
+input type:pointer {
+    accel_profile flat
+}
+
+# Colors
+set $blue #8caaee
+set $clear #FFFFFF00
+set $peach #ef9f76
+# Cursor
+seat seat0 xcursor_theme Adwaita
+
+# playerctld
+exec playerctld daemon
+
+# GTK
+exec {
+    gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+    gsettings set org.gnome.desktop.interface cursor-theme Adwaita
+    gsettings set org.gnome.desktop.interface gtk-theme Adwaita
+    gsettings set org.gnome.desktop.interface icon-theme Adwaita
+}
+
+# Window config
+client.focused $clear $clear $clear $blue $blue
+client.focused_inactive $clear $clear $clear $clear $clear
+client.unfocused $clear $clear $clear $clear $clear
+client.urgent $clear $clear $clear $peach $peach
+default_border pixel 2
+default_floating_border pixel 2
+gaps inner 8
+
+# Imports
+include /etc/sway/config.d/*
+
+# Desktop Shell
+exec qs -c noctalia-shell

@@ -1,0 +1,123 @@
+#!/usr/bin/env bash
+
+# keymaps #
+riverctl map normal Alt Return spawn ghostty
+riverctl map normal Alt Space spawn fuzzel
+
+riverctl map normal Alt Q close
+
+riverctl map normal Alt H focus-view left
+riverctl map normal Alt J focus-view down
+riverctl map normal Alt K focus-view up
+riverctl map normal Alt L focus-view right
+
+riverctl map normal Alt+Control H focus-output left
+riverctl map normal Alt+Control J focus-output down
+riverctl map normal Alt+Control K focus-output up
+riverctl map normal Alt+Control L focus-output right
+
+riverctl map normal Alt+Shift H swap left
+riverctl map normal Alt+Shift J swap down
+riverctl map normal Alt+Shift K swap up
+riverctl map normal Alt+Shift L swap right
+
+riverctl map normal Alt+Shift+Control H send-to-output left
+riverctl map normal Alt+Shift+Control J send-to-output down
+riverctl map normal Alt+Shift+Control K send-to-output up
+riverctl map normal Alt+Shift+Control L send-to-output right
+
+riverctl map normal Alt Comma send-layout-cmd rivertile 'main-ratio -0.05'
+riverctl map normal Alt Period send-layout-cmd rivertile 'main-ratio +0.05'
+
+riverctl map normal Alt+Shift F toggle-float
+
+riverctl map normal Alt F toggle-fullscreen
+
+riverctl map-pointer normal Alt BTN_LEFT move-view
+riverctl map-pointer normal Alt BTN_RIGHT resize-view
+
+riverctl map normal Alt 1 set-focused-tags 1
+riverctl map normal Alt 2 set-focused-tags 2
+riverctl map normal Alt 3 set-focused-tags 4
+riverctl map normal Alt 4 set-focused-tags 8
+riverctl map normal Alt 5 set-focused-tags 16
+riverctl map normal Alt 6 set-focused-tags 32
+riverctl map normal Alt 7 set-focused-tags 64
+riverctl map normal Alt 8 set-focused-tags 128
+riverctl map normal Alt 9 set-focused-tags 256
+riverctl map normal Alt 0 set-focused-tags 512
+
+riverctl map normal Alt+Shift 1 set-view-tags 1
+riverctl map normal Alt+Shift 2 set-view-tags 2
+riverctl map normal Alt+Shift 3 set-view-tags 4
+riverctl map normal Alt+Shift 4 set-view-tags 8
+riverctl map normal Alt+Shift 5 set-view-tags 16
+riverctl map normal Alt+Shift 6 set-view-tags 32
+riverctl map normal Alt+Shift 7 set-view-tags 64
+riverctl map normal Alt+Shift 8 set-view-tags 128
+riverctl map normal Alt+Shift 9 set-view-tags 256
+riverctl map normal Alt+Shift 0 set-view-tags 512
+
+# screenshot #
+riverctl map normal Alt+Shift S spawn 'grim -g "$(slurp)" - | wl-copy'
+
+# ocr #
+riverctl map normal Alt+Shift T spawn 'grim -g "$(slurp)" - | tesseract - - | wl-copy'
+
+# brightness #
+riverctl map normal None XF86MonBrightnessDown spawn 'brightnessctl set 1%-'
+riverctl map normal None XF86MonBrightnessUp spawn 'brightnessctl set 1%+'
+
+# media #
+riverctl map normal None XF86AudioLowerVolume spawn 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-'
+riverctl map normal None XF86AudioRaiseVolume spawn 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+'
+riverctl map normal None XF86AudioMute spawn 'wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle'
+riverctl map normal None XF86AudioMicMute spawn 'wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle'
+riverctl map normal None XF86AudioPlay spawn 'playerctl play-pause'
+riverctl map normal None XF86AudioPrev spawn 'playerctl previous'
+riverctl map normal None XF86AudioNext spawn 'playerctl next'
+
+# inputs #
+riverctl input '' accel-profile flat
+riverctl input '' pointer-accel -0.9
+
+riverctl input '' middle-emulation enabled
+riverctl input '' natural-scroll enabled
+riverctl input '' tap enabled
+
+# rules #
+riverctl rule-add ssd
+
+# uncategorized #
+riverctl allow-tearing enabled
+riverctl default-attach-mode below
+riverctl border-color-focused 0x8caaee
+riverctl border-color-unfocused 0xffffff00
+riverctl border-color-urgent 0xef9f76
+riverctl border-width 2
+riverctl focus-follows-cursor disabled
+riverctl set-cursor-warp disabled
+riverctl xcursor-theme Adwaita
+
+# rivertile #
+riverctl default-layout rivertile
+rivertile -main-count 1 -main-ratio 0.5 -view-padding 4 -outer-padding 4 &
+
+# outputs #
+riverctl spawn kanshi
+
+# wallpaper #
+riverctl spawn 'swaybg -i $HOME/.config/background.png -m fill -o "*"'
+
+# waybar #
+riverctl spawn waybar
+
+# gtk #
+gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+gsettings set org.gnome.desktop.interface cursor-theme Adwaita
+gsettings set org.gnome.desktop.interface gtk-theme Adwaita
+gsettings set org.gnome.desktop.interface icon-theme Adwaita
+
+# env vars #
+systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river

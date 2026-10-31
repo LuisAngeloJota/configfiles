@@ -1,0 +1,1 @@
+--add-modules jdk.incubator.vector -XX:+PerfDisableSharedMem -XX:-DontCompileHugeMethods -XX:+AlwaysPreTouch -XX:+DisableExplicitGC -XX:+UseCompactObjectHeaders -XX:+UseZGC -XX:+UseTransparentHugePages -XX:ReservedCodeCacheSize=512m -Djdk.graal.CompilerConfiguration=enterprise -Djdk.graal.TuneInlinerExploration=1

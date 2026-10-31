@@ -1,0 +1,135 @@
+direct-scanout = true
+gfx-api = "Vulkan"
+render-device.name = "dedicated"
+
+focus-follows-mouse = false
+show-bar = false
+show-titles = false
+window-management-key = "Alt_L"
+workspace-display-order = "sorted"
+
+keymap = """
+  xkb_keymap {
+    xkb_keycodes { include "evdev+aliases(qwerty)" };
+    xkb_types    { include "complete"              };
+    xkb_compat   { include "complete"              };
+    xkb_symbols  { include "pc+us+inet(evdev)"     };
+  };
+"""
+repeat-rate = { rate = 50, delay = 200 }
+
+on-graphics-initialized = { type = "exec", exec = "noctalia" }
+
+[[clients]]
+capabilities = "all"
+
+[[clients]]
+match.comm = "flatpak-portal" # .flatpak-portal (for nixos)
+sandbox-bounding-capabilities = "all"
+
+[[drm-devices]]
+name = "dedicated"
+match = {
+    pci-vendor = 0x10de,
+    pci-model = 0x1c81,
+}
+flip-margin-ms = 1.0
+
+[[drm-devices]]
+name = "integrated"
+match = {
+    pci-vendor = 0x1002,
+    pci-model = 0x1638,
+}
+flip-margin-ms = 1.0
+
+[[inputs]]
+match.is-pointer = true
+accel-profile = "Flat"
+
+[[outputs]]
+match.connector = "HDMI-A-1"
+mode = {
+  width = 1920,
+  height = 1080,
+  refresh-rate = 60,
+}
+scale = 1.0
+tearing.mode = "always"
+transform = "none"
+x = 0
+y = 0
+
+[shortcuts]
+alt-shift-s = {
+    type = "exec",
+    exec = { shell = "grim -g \"$(slurp)\" - | wl-copy", privileged = true },
+}
+alt-shift-t = {
+    type = "exec",
+    exec = { shell = "grim -g \"$(slurp)\" - | tesseract - - | wl-copy", privileged = true },
+}
+
+alt-Return = { type = "exec", exec = "ghostty" }
+alt-space = { type = "exec", exec = ["noctalia", "msg", "panel-toggle", "launcher"] }
+alt-z = { type = "exec", exec = ["noctalia", "msg", "panel-toggle", "clipboard"] }
+
+alt-h = "focus-left"
+alt-j = "focus-down"
+alt-k = "focus-up"
+alt-l = "focus-right"
+
+alt-shift-h = "move-left"
+alt-shift-j = "move-down"
+alt-shift-k = "move-up"
+alt-shift-l = "move-right"
+
+alt-d = "split-horizontal"
+alt-v = "split-vertical"
+
+alt-t = "toggle-split"
+alt-f = "toggle-fullscreen"
+
+alt-c = "open-control-center"
+alt-q = "close"
+alt-shift-f = "toggle-floating"
+alt-shift-q = "quit"
+alt-shift-r = "reload-config-toml"
+
+ctrl-alt-F1 = { type = "switch-to-vt", num = 1 }
+ctrl-alt-F2 = { type = "switch-to-vt", num = 2 }
+ctrl-alt-F3 = { type = "switch-to-vt", num = 3 }
+ctrl-alt-F4 = { type = "switch-to-vt", num = 4 }
+ctrl-alt-F5 = { type = "switch-to-vt", num = 5 }
+ctrl-alt-F6 = { type = "switch-to-vt", num = 6 }
+ctrl-alt-F7 = { type = "switch-to-vt", num = 7 }
+ctrl-alt-F8 = { type = "switch-to-vt", num = 8 }
+ctrl-alt-F9 = { type = "switch-to-vt", num = 9 }
+ctrl-alt-F10 = { type = "switch-to-vt", num = 10 }
+ctrl-alt-F11 = { type = "switch-to-vt", num = 11 }
+ctrl-alt-F12 = { type = "switch-to-vt", num = 12 }
+
+alt-1 = { type = "show-workspace", name = "1" }
+alt-2 = { type = "show-workspace", name = "2" }
+alt-3 = { type = "show-workspace", name = "3" }
+alt-4 = { type = "show-workspace", name = "4" }
+alt-5 = { type = "show-workspace", name = "5" }
+alt-6 = { type = "show-workspace", name = "6" }
+alt-7 = { type = "show-workspace", name = "7" }
+alt-8 = { type = "show-workspace", name = "8" }
+alt-9 = { type = "show-workspace", name = "9" }
+alt-0 = { type = "show-workspace", name = "10" }
+
+alt-shift-1 = { type = "move-to-workspace", name = "1" }
+alt-shift-2 = { type = "move-to-workspace", name = "2" }
+alt-shift-3 = { type = "move-to-workspace", name = "3" }
+alt-shift-4 = { type = "move-to-workspace", name = "4" }
+alt-shift-5 = { type = "move-to-workspace", name = "5" }
+alt-shift-6 = { type = "move-to-workspace", name = "6" }
+alt-shift-7 = { type = "move-to-workspace", name = "7" }
+alt-shift-8 = { type = "move-to-workspace", name = "8" }
+alt-shift-9 = { type = "move-to-workspace", name = "9" }
+alt-shift-0 = { type = "move-to-workspace", name = "10" }
+
+[theme]
+border-width = 1

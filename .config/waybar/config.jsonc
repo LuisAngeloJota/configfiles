@@ -1,0 +1,68 @@
+{
+  "height": 24,
+  "spacing": 8,
+  "margin-top": 8,
+  "margin-bottom": 0,
+  "margin-left": 8,
+  "margin-right": 8,
+
+  "modules-left": [
+    "sway/workspaces"
+  ],
+
+  "modules-center": [
+    "clock"
+  ],
+
+  "modules-right": [
+    "wireplumber",
+    "battery",
+    "network",
+    "bluetooth",
+    "idle_inhibitor"
+  ],
+
+  "sway/workspaces": {
+    "all-outputs": false,
+    "format": "{name}",
+    "disable-scroll": true
+  },
+
+  "clock": {
+    "format": "{:%a %b %d %H:%M}",
+    "tooltip": false
+  },
+
+  "wireplumber": {
+    "format": "\uf027  {volume}%",
+    "format-muted": "\uf6a9 {volume}%",
+    "on-click": "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "tooltip": false
+  },
+
+  "battery": {
+    "format": "\uf1e6  {capacity}%",
+    "format-charging": "\uf0e7  {capacity}%",
+    "format-discharging": "\uf240  {capacity}%",
+    "tooltip": false
+  },
+
+  "network": {
+    "format": "",
+    "format-disconnected": "",
+    "format-ethernet": "\uf6ff    {ifname}",
+    "format-wifi": "\uf1eb    {essid}",
+    "tooltip": false
+  },
+
+  "bluetooth": {
+    "format": "",
+    "format-connected": "\uf294  {device_alias}",
+    "tooltip": false
+  },
+  
+  "idle_inhibitor": {
+    "format": "\uf7b6",
+    "tooltip": false
+  }
+}
