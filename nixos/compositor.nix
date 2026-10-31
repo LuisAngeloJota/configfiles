@@ -15,6 +15,7 @@
     ghostty grim
     jay
     mpv
+    noctalia
     slurp
     tesseract
     qpwgraph
@@ -22,7 +23,6 @@
   ];
 
   programs.dconf.enable = true;
-  programs.dms-shell.enable = true;
   programs.xwayland.enable = true;
 
   services.greetd.enable = true;
