@@ -1,6 +1,12 @@
 require("catppuccin").setup {
   auto_integrations = true,
   flavour = "mocha",
+  integrations = {
+    mini = {
+      enabled = true,
+      indentscope_color = "",
+    },
+  },
 }
 require("mini.completion").setup()
 require("mini.statusline").setup()
