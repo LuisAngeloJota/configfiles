@@ -1,35 +1,8 @@
 require("catppuccin").setup {
-  default_integrations = false,
+  auto_integrations = true,
   flavour = "mocha",
-  integrations = {
-    treesitter = true,
-    mini = {
-      enabled = true,
-    },
-    native_lsp = {
-      enabled = true,
-      virtual_text = {
-        errors = { "italic" },
-        hints = { "italic" },
-        warnings = { "italic" },
-        information = { "italic" },
-        ok = { "italic" },
-      },
-      underlines = {
-        errors = { "underline" },
-        hints = { "underline" },
-        warnings = { "underline" },
-        information = { "underline" },
-        ok = { "underline" },
-      },
-      inlay_hints = {
-        background = true,
-      },
-    },
-  },
 }
 require("mini.completion").setup()
-require("mini.icons").setup()
 require("mini.statusline").setup()
 require("nvim-treesitter.configs").setup {
   auto_install = false,
@@ -59,9 +32,7 @@ require("nvim-treesitter.configs").setup {
   },
 }
 
--- vim.lsp.enable("dartls")
-
-vim.cmd.colorscheme "catppuccin"
+vim.cmd.colorscheme "catppuccin-nvim"
 
 vim.opt.clipboard = "unnamedplus"
 vim.opt.expandtab = true
