@@ -4,33 +4,6 @@ require("catppuccin").setup {
 }
 require("mini.completion").setup()
 require("mini.statusline").setup()
-require("nvim-treesitter.configs").setup {
-  auto_install = false,
-  sync_install = false,
-  ensure_installed = {
-    "c",
-    "lua",
-    "vim",
-    "vimdoc",
-    "query",
-    "markdown",
-    "markdown_inline",
-
-    "bash",
-    "css",
-    "dart",
-    "html",
-    "javascript",
-    "json",
-    "python",
-    "toml",
-    "yaml",
-  },
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = false,
-  },
-}
 
 vim.cmd.colorscheme "catppuccin-nvim"
 
