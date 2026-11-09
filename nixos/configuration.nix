@@ -137,6 +137,7 @@
 
   systemd.network.enable = true;
   systemd.network.networks."50-wlan" = {
+    linkConfig.RequiredForOnline = "routable";
     matchConfig.Name = "wlan0";
     networkConfig.DHCP = "yes";
     networkConfig.IgnoreCarrierLoss = "3s";
