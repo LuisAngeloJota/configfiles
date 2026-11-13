@@ -19,7 +19,7 @@
     noctalia
     slurp
     tesseract
-    qpwgraph
+    qpwgraph qview
     wiremix wl-clipboard
   ];
 
