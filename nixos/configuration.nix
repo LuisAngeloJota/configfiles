@@ -87,7 +87,7 @@
   hardware.firmware = [
     pkgs.linux-firmware
   ];
-  hardware.block.defaultScheduler = "kyber";
+  hardware.block.defaultScheduler = "none";
   hardware.block.defaultSchedulerRotational = "bfq";
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = false;
