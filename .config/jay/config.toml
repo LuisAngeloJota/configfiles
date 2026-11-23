@@ -3,6 +3,7 @@ gfx-api = "Vulkan"
 render-device.name = "dedicated"
 
 focus-follows-mouse = false
+idle.minutes = 0
 show-bar = false
 show-titles = false
 window-management-key = "Alt_L"
