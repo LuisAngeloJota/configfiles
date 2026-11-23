@@ -76,7 +76,7 @@ alt-shift-t = {
     exec = { shell = "grim -g \"$(slurp)\" - | tesseract - - | wl-copy", privileged = true },
 }
 
-alt-return = { type = "exec", exec = "ghostty" }
+alt-Return = { type = "exec", exec = "ghostty" }
 alt-space = { type = "exec", exec = ["noctalia", "msg", "panel-toggle", "launcher"] }
 alt-z = { type = "exec", exec = ["noctalia", "msg", "panel-toggle", "clipboard"] }
 
