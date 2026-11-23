@@ -24,7 +24,7 @@ on-graphics-initialized = { type = "exec", exec = "noctalia" }
 capabilities = "all"
 
 [[clients]]
-match.comm = "flatpak-portal" # .flatpak-portal (for nixos)
+match.comm = "flatpak-portal"
 sandbox-bounding-capabilities = "all"
 
 [[drm-devices]]
@@ -76,7 +76,7 @@ alt-shift-t = {
     exec = { shell = "grim -g \"$(slurp)\" - | tesseract - - | wl-copy", privileged = true },
 }
 
-alt-Return = { type = "exec", exec = "ghostty" }
+alt-return = { type = "exec", exec = "ghostty" }
 alt-space = { type = "exec", exec = ["noctalia", "msg", "panel-toggle", "launcher"] }
 alt-z = { type = "exec", exec = ["noctalia", "msg", "panel-toggle", "clipboard"] }
 
@@ -90,17 +90,11 @@ alt-shift-j = "move-down"
 alt-shift-k = "move-up"
 alt-shift-l = "move-right"
 
-alt-d = "split-horizontal"
-alt-v = "split-vertical"
-
-alt-t = "toggle-split"
 alt-f = "toggle-fullscreen"
-
-alt-c = "open-control-center"
-alt-q = "close"
 alt-shift-f = "toggle-floating"
+alt-q = "close"
 alt-shift-q = "quit"
-alt-shift-r = "reload-config-toml"
+alt-s = "toggle-split"
 
 ctrl-alt-F1 = { type = "switch-to-vt", num = 1 }
 ctrl-alt-F2 = { type = "switch-to-vt", num = 2 }
@@ -123,8 +117,6 @@ alt-5 = { type = "show-workspace", name = "5" }
 alt-6 = { type = "show-workspace", name = "6" }
 alt-7 = { type = "show-workspace", name = "7" }
 alt-8 = { type = "show-workspace", name = "8" }
-alt-9 = { type = "show-workspace", name = "9" }
-alt-0 = { type = "show-workspace", name = "10" }
 
 alt-shift-1 = { type = "move-to-workspace", name = "1" }
 alt-shift-2 = { type = "move-to-workspace", name = "2" }
@@ -134,8 +126,6 @@ alt-shift-5 = { type = "move-to-workspace", name = "5" }
 alt-shift-6 = { type = "move-to-workspace", name = "6" }
 alt-shift-7 = { type = "move-to-workspace", name = "7" }
 alt-shift-8 = { type = "move-to-workspace", name = "8" }
-alt-shift-9 = { type = "move-to-workspace", name = "9" }
-alt-shift-0 = { type = "move-to-workspace", name = "10" }
 
 [theme]
 border-width = 1
