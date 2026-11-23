@@ -49,6 +49,8 @@ accel-profile = "Flat"
 
 [[outputs]]
 match.connector = "HDMI-A-1"
+blend-space = "srgb"
+format = "xrgb8888"
 mode = {
   width = 1920,
   height = 1080,
@@ -56,9 +58,13 @@ mode = {
 }
 scale = 1.0
 tearing.mode = "always"
+use-native-gamut = true
 transform = "none"
 x = 0
 y = 0
+
+[color-management]
+enabled = true
 
 [shortcuts]
 alt-shift-s = {
