@@ -124,5 +124,8 @@ alt-shift-6 = { type = "move-to-workspace", name = "6" }
 alt-shift-7 = { type = "move-to-workspace", name = "7" }
 alt-shift-8 = { type = "move-to-workspace", name = "8" }
 
+alt-Tab = { type = "toggle-overlay", name = "9" }
+alt-shift-Tab = { type = "move-to-workspace", name = "9" }
+
 [theme]
 border-width = 1
