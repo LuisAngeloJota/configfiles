@@ -24,10 +24,6 @@ on-graphics-initialized = { type = "exec", exec = "noctalia" }
 [[clients]]
 capabilities = "all"
 
-[[clients]]
-match.comm = "flatpak-portal"
-sandbox-bounding-capabilities = "all"
-
 [[drm-devices]]
 name = "dedicated"
 match = {
