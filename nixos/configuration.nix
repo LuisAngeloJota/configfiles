@@ -14,6 +14,7 @@
     ./thunar.nix
     ./uxplay.nix
     ./virt-manager.nix
+    #./wireguard.nix
   ];
   # update system state version
   system.stateVersion = "";
