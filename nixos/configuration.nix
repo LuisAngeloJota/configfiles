@@ -32,6 +32,9 @@
   boot.extraModulePackages = with config.boot.kernelPackages; [
     v4l2loopback
   ];
+
+  boot.initrd.systemd.network.wait-online.enable = false;
+
   boot.kernelModules = [
     "v4l2loopback"
   ];
@@ -141,6 +144,7 @@
     networkConfig.DHCP = "yes";
     networkConfig.IgnoreCarrierLoss = "3s";
   };
+  systemd.network.wait-online.enable = false;
 
   time.timeZone = "Asia/Manila";
 
