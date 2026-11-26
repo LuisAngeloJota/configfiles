@@ -64,8 +64,6 @@
     ncdu neovim nnn
     poppler-utils
     ripgrep rsync
-    tmux
-    wireguard-tools
     yt-dlp
   ];
 
