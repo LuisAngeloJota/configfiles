@@ -104,6 +104,7 @@
   networking.nameservers = [
     "76.76.2.11#x-oisd.freedns.controld.com"
   ];
+  networking.nftables.enable = true;
   networking.timeServers = [
     "time.cloudflare.com"
   ];
